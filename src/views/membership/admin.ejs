@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Become an Admin | Members Only</title>
+  </head>
+  <body>
+    <div class="root">
+      <%- include("../partials/header") %>
+      <main>
+        <div class="form-page">
+          <div class="page-heading">
+            <h1>Become an Admin</h1>
+            <a class="new-btn" href="/">Cancel</a>
+          </div>
+          <p class="hint">
+            Enter the admin passcode to gain the power to delete any post on the board.
+          </p>
+          <form class="box-form" method="POST" action="/membership/admin">
+            <%- include("../partials/form-errors") %>
+            <div class="input-wrapper">
+              <label for="passcode">Admin passcode</label>
+              <input type="password" name="passcode" id="passcode"
+                placeholder="Enter the admin passcode" required maxlength="255">
+            </div>
+            <div class="form-btn">
+              <button type="reset">Reset</button>
+              <button type="submit">Become an Admin</button>
+            </div>
+          </form>
+        </div>
+      </main>
+      <%- include("../partials/footer") %>
+    </div>
+  </body>
+</html>

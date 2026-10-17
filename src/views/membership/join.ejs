@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Join the Club | Members Only</title>
+  </head>
+  <body>
+    <div class="root">
+      <%- include("../partials/header") %>
+      <main>
+        <div class="form-page">
+          <div class="page-heading">
+            <h1>Join the Club</h1>
+            <a class="new-btn" href="/">Cancel</a>
+          </div>
+          <p class="hint">
+            Enter the secret club passcode to reveal the author and date of every post.
+          </p>
+          <form class="box-form" method="POST" action="/membership/join">
+            <%- include("../partials/form-errors") %>
+            <div class="input-wrapper">
+              <label for="passcode">Club passcode</label>
+              <input type="password" name="passcode" id="passcode"
+                placeholder="Enter the club passcode" required maxlength="255">
+            </div>
+            <div class="form-btn">
+              <button type="reset">Reset</button>
+              <button type="submit">Join the Club</button>
+            </div>
+          </form>
+        </div>
+      </main>
+      <%- include("../partials/footer") %>
+    </div>
+  </body>
+</html>
