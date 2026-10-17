@@ -1,0 +1,27 @@
+<div class="pagination">
+  <% const base = typeof basePath !== "undefined" ? basePath : "/"; %>
+  <% if (hasPrevPage) { %>
+    <a href="<%= base %>?page=<%= currentPage - 1 %>" class="page-link">&laquo; Prev</a>
+  <% } else { %>
+    <span class="page-link disabled">&laquo; Prev</span>
+  <% } %>
+
+  <% paginationRange.forEach(item => { %>
+    <% if (item === '...') { %>
+      <span class="page-link ellipsis">&hellip;</span>
+    <% } else { %>
+      <a
+        href="<%= base %>?page=<%= item %>"
+        class="page-link <%= item === currentPage ? 'active' : '' %>"
+      >
+        <%= item %>
+      </a>
+    <% } %>
+  <% }) %>
+
+  <% if (hasNextPage) { %>
+    <a href="<%= base %>?page=<%= currentPage + 1 %>" class="page-link">Next &raquo;</a>
+  <% } else { %>
+    <span class="page-link disabled">Next &raquo;</span>
+  <% } %>
+</div>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Members Only</title>
+  </head>
+  <body>
+    <div class="root">
+      <%- include("partials/header") %>
+      <main>
+        <% const canSeeAuthors = locals.isAuthenticated && (locals.user.membership || locals.user.role === "ADMIN"); %>
+        <div class="page-heading">
+          <h1>Clubhouse</h1>
+          <% if (locals.isAuthenticated) { %>
+            <a class="new-btn" href="/posts/new">New Post</a>
+          <% } %>
+        </div>
+
+        <% if (!locals.isAuthenticated) { %>
+          <p class="hint">
+            Only clubhouse members can see who wrote what.
+            <a href="/auth/login">Log in</a> or <a href="/auth/signup">sign up</a> to join.
+          </p>
+        <% } else if (!canSeeAuthors) { %>
+          <p class="hint">
+            You are logged in as <%= locals.user.name %>, but you are not a member yet.
+            <a href="/membership/join">Join the club</a> to reveal authors and dates.
+          </p>
+        <% } %>
+
+        <div class="posts">
+          <% if (posts.length > 0) { %>
+            <% posts.forEach((post) => { %>
+              <article class="post-item">
+                <div class="post-head">
+                  <strong class="post-title"><%= post.title %></strong>
+                  <% if (canSeeAuthors) { %>
+                    <span class="post-author">by <%= post.author_name %></span>
+                  <% } %>
+                </div>
+                <p class="post-text"><%= post.text %></p>
+                <div class="post-foot">
+                  <% if (canSeeAuthors) { %>
+                    <p class="post-date"><%= new Date(post.created_at).toLocaleString() %></p>
+                  <% } %>
+                  <% if (locals.isAuthenticated && (locals.user.role === "ADMIN" || locals.user.id === post.user_id)) { %>
+                    <form action="/posts/<%= post.id %>/delete" method="POST"
+                      class="inline-delete" onsubmit="return confirm('Delete this post?');">
+                      <button type="submit" class="new-btn delete-btn">Delete</button>
+                    </form>
+                  <% } %>
+                </div>
+              </article>
+            <% }) %>
+          <% } else { %>
+            <p class="empty">There are no posts yet. Be the first to post!</p>
+          <% } %>
+        </div>
+
+        <%- include("partials/pagination") %>
+      </main>
+      <%- include("partials/footer") %>
+    </div>
+  </body>
+</html>
