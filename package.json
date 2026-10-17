@@ -1,4 +1,17 @@
 {
+  "name": "odin-members-only",
+  "version": "1.0.0",
+  "description": "The Odin Project: Members Only",
+  "type": "module",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "node --watch src/app.js",
+    "start": "node src/app.js",
+    "seed": "node src/db/createAndSeed.js",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint"
+  },
   "dependencies": {
     "bcrypt": "^6.0.0",
     "connect-pg-simple": "^10.0.0",
