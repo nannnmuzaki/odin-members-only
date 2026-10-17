@@ -1,0 +1,391 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: monospace;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-block: 2rem;
+  margin-inline: 4rem;
+
+  @media (max-width: 1000px) {
+    margin-block: 1rem;
+    margin-inline: 2rem;
+  }
+
+  @media (max-width: 500px) {
+    margin-block: 1rem;
+    margin-inline: 1.2rem;
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 1.2rem;
+  padding-inline: 2rem;
+
+  @media (max-width: 500px) {
+    padding-block: 1rem;
+    padding-inline: 1.2rem;
+  }
+
+  border-bottom: 1px solid black;
+  position: relative;
+}
+
+header > a {
+  font-size: 18px;
+
+  @media (max-width: 500px) {
+    font-size: 16px;
+  }
+
+  color: inherit;
+  font-weight: bold;
+  text-wrap: nowrap;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0.4rem;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: black;
+}
+
+@media (max-width: 700px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: white;
+    border-bottom: 1px solid black;
+    padding: 0.8rem 1.2rem;
+    z-index: 10;
+  }
+
+  .nav-links .new-btn,
+  .nav-links .inline-form > button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-toggle:checked ~ .nav-links {
+    display: flex;
+  }
+}
+
+.new-btn {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid black;
+  background: white;
+  text-wrap: nowrap;
+  cursor: pointer;
+}
+
+.new-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.inline-form {
+  display: inline;
+}
+
+.inline-delete {
+  display: inline;
+}
+
+.delete-btn {
+  background: white;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding-block: 1rem;
+  border-top: 1px solid black;
+}
+
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.page-heading > h1 {
+  font-size: 24px;
+
+  @media (max-width: 500px) {
+    font-size: 20px;
+  }
+}
+
+.hint {
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+  margin-bottom: 1rem;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.form-foot {
+  width: 100%;
+  max-width: 500px;
+  margin-inline: auto;
+  margin-top: 0.8rem;
+  font-size: 14px;
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.post-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid black;
+  width: 100%;
+}
+
+.post-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.post-title {
+  font-size: 16px;
+  word-break: break-word;
+}
+
+.post-author {
+  font-size: 13px;
+  font-style: italic;
+}
+
+.post-text {
+  font-size: 15px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.post-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.post-date {
+  font-size: 13px;
+}
+
+.form-page {
+  width: 100%;
+  max-width: 500px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.box-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+  max-width: 500px;
+  margin-inline: auto;
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.input-wrapper > label {
+  font-size: 16px;
+}
+
+.input-wrapper > input,
+.input-wrapper > textarea {
+  font-family: monospace;
+  font-size: 14px;
+  padding: 0.3rem;
+  border: 1px solid black;
+  border-radius: 0;
+  background: white;
+}
+
+.input-wrapper > textarea {
+  field-sizing: content;
+  min-height: 120px;
+}
+
+.form-btn {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.form-btn > button {
+  font-family: monospace;
+  padding: 0.4rem 0.8rem;
+  background-color: inherit;
+  border: 1px solid black;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.form-btn > button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.form-errors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.6rem;
+  border: 1px solid black;
+}
+
+.error-list {
+  list-style-position: inside;
+}
+
+.empty {
+  font-size: 16px;
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+  gap: 0.2rem;
+}
+
+.error-page > h1 {
+  margin-bottom: 0.6rem;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  width: 100%;
+  max-width: 600px;
+  justify-content: flex-end;
+}
+
+.page-link {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #000;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.page-link:hover:not(.disabled):not(.active) {
+  background-color: #f0f0f0;
+}
+
+.page-link.active {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+}
+
+.page-link.disabled {
+  color: #999;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.page-link.ellipsis {
+  border: none;
+  background: transparent;
+  cursor: default;
+  padding: 6px 6px;
+}
