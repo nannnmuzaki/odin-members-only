@@ -1,0 +1,26 @@
+<header>
+  <a href="/">members-only</a>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+  <label for="nav-toggle" class="hamburger" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+  <nav class="nav-links">
+    <% if (locals.isAuthenticated) { %>
+      <a class="new-btn" href="/posts/new">New Post</a>
+      <% if (!locals.user.membership && locals.user.role !== "ADMIN") { %>
+        <a class="new-btn" href="/membership/join">Join the Club</a>
+      <% } %>
+      <% if (locals.user.role !== "ADMIN") { %>
+        <a class="new-btn" href="/membership/admin">Become Admin</a>
+      <% } %>
+      <form class="inline-form" action="/auth/logout" method="POST">
+        <button type="submit" class="new-btn">Log Out</button>
+      </form>
+    <% } else { %>
+      <a class="new-btn" href="/auth/login">Log In</a>
+      <a class="new-btn" href="/auth/signup">Sign Up</a>
+    <% } %>
+  </nav>
+</header>

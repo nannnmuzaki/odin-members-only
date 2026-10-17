@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Log In | Members Only</title>
+  </head>
+  <body>
+    <div class="root">
+      <%- include("../partials/header") %>
+      <main>
+        <div class="form-page">
+          <div class="page-heading">
+            <h1>Log In</h1>
+            <a class="new-btn" href="/">Cancel</a>
+          </div>
+          <form class="box-form" method="POST" action="/auth/login">
+            <%- include("../partials/form-errors") %>
+            <div class="input-wrapper">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" placeholder="you@example.com"
+                value="<%= locals.values?.email || "" %>" required maxlength="255">
+            </div>
+            <div class="input-wrapper">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password"
+                placeholder="Enter your password" required>
+            </div>
+            <div class="form-btn">
+              <button type="reset">Reset</button>
+              <button type="submit">Log In</button>
+            </div>
+          </form>
+          <p class="form-foot">
+            No account yet? <a href="/auth/signup">Sign up</a>.
+          </p>
+        </div>
+      </main>
+      <%- include("../partials/footer") %>
+    </div>
+  </body>
+</html>

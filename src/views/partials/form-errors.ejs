@@ -1,0 +1,10 @@
+<% if (locals.errors && errors.length > 0) { %>
+  <div class="form-errors">
+    <strong>Errors:</strong>
+    <ul class="error-list">
+      <% errors.forEach(error => { %>
+        <li><strong><%= error.msg || error %></strong></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
